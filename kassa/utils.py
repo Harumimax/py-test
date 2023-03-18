@@ -10,7 +10,7 @@ def get_change(price, paid):
     if full_paid < price:
         raise ValueError("Дано мало денег")
     change = full_paid - price
-    print(f"Это сдача {change}")
+    #print(f"Это сдача {change}")
     result = []
     for i in nominals:
         #print(f"Это i в фор {i}")
