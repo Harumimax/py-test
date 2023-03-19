@@ -1,3 +1,5 @@
+import random
+
 # task 2
 def combinator(list):
     result = []
@@ -10,10 +12,23 @@ def combinator(list):
     return result
 
 lst = [11, 22, 33]
-print(combinator(lst))
+#print(combinator(lst))
 
-# task 5
-def my_summa(arg1, arg2, *args):
-    print(" ".join([arg1] + [arg2] + list(args)))
+# task 5 вариант 1
+def my_summa(*nums):
+    result = 0
+    for num in nums:
+        result += num
+    return result
 
-my_summa('1', '2', '3', four='4', five='5')
+print(my_summa(1, 2, 3))
+
+# task 5 вариант 2
+def my_summa(*nums):
+    return sum(nums)
+
+print(my_summa(3, 4, 3))
+
+# task 4 [word.strip() for word in words.split(",")]
+random_list = random.sample([i for i in range(100)], random.randint(1, 10))
+print(random_list)
