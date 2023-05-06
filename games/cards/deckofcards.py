@@ -1,8 +1,5 @@
 import random
-
-NumsList = ['6', '7', '8', '9', '10', 'Валет', "Дама", "Король", "Туз"]
-MastList = ["Пики", "Крести", "Буби", "Черви"]
-
+from cards.const import NumsList, MastList
 
 class Card():
     def __init__(self, num, mast="none"):
@@ -54,14 +51,6 @@ class DeckofCards(): ############################################### DECK
     def return_list(self):
         return self.deck
 
-"""class CardsOnTable(DeckofCards):
-    def __init__(self):
-        super().__init__()
-        self.deck = []
-
-    def make_cards_on_table(self, card_list):
-        for current_card in card_list:
-            self.deck.append(current_card)"""
 class Hand(DeckofCards): ######################################  HAND
     def __init__(self, name="none"):
         super().__init__()

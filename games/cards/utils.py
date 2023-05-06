@@ -1,4 +1,4 @@
-#from cards.const import NumsList
+from cards.const import NumsList
 
 def get_min_card(deck_list):
     if type(deck_list) != list:
@@ -14,9 +14,35 @@ def get_min_card(deck_list):
 def get_index_max_card(list_of_card):
     cards_indexes = []
     for current_card in list_of_card:
-        cards_indexes.append(NumsList.index(current_card.num))
+        cards_indexes.append(NumsList.index(current_card["card"].num))
     max_card_index = max(cards_indexes)
-    result = False if cards_indexes.count(max_card_index) > 1 else cards_indexes.index(max_card_index)
+    result = []
+    for i in range(len(cards_indexes)):
+        if max_card_index == cards_indexes[i]:
+            result.append(list_of_card[i]["name"])
+
+    print(cards_indexes)
+    if len(result) == 1:
+        result = result[0]
+    print(result)
+    return result
+
+def get_winner_of_round(list_of_card):
+    cards_indexes = []
+    for current_card in list_of_card:
+        cards_indexes.append(NumsList.index(current_card["card"].num))
+    max_card_index = max(cards_indexes)
+    result = False if cards_indexes.count(max_card_index) > 1 else True
+    print(f"Победитель раудна найден? ", result)
+    return result
+
+def check_players_have_cards(list_of_player, players_in_round):
+    result = True
+    print(players_in_round)
+    for name, index in players_in_round.items():
+        if list_of_player[index].get_deck_len() == 0:
+            return False
+    print(f"Карту у всех есть?", result)
     return result
 
 
@@ -61,13 +87,9 @@ def unique_words(str):
             result.append(current_word)
     return result
 
-print(unique_words("Python is great, isn't it? is Yes- yes blat"))
-
 def filter_capitalized_words(list):
     result = []
     for current_str in list:
         if current_str[0] == current_str[0].upper():
             result.append(current_str)
     return result
-
-
